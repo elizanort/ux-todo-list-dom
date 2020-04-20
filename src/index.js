@@ -17,7 +17,7 @@ let todos = [
         description: "Call the caterers"
     }
 ];
-
+ 
 function renderTodoApp() {
     let app = document.querySelector("#app")
     let h1 = document.createElement("h1")
