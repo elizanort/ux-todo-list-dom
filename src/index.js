@@ -19,14 +19,27 @@ let todos = [
 ];
  
 function renderTodoApp() {
-    let app = document.querySelector("#app")
-    let h1 = document.createElement("h1")
-    // your code here
+    let app = document.querySelector("#app");
+    let h1 = document.createElement("h1");
+    let toDoList = document.createElement("form");
 
-    h1.innerText = "Todo List"
+    h1.innerText = "Todo List";
 
-    app.appendChild(h1)
-    // and maybe some here
+    for (let tasks of todos){
+        let isChecked = task.completed ? "checked" : null;
+        let html = `
+        <ul>
+            <li>
+            <input type="checkbox" ${isChecked}> 
+            <label> ${tasks.description} </label>
+            </li>
+        </ul>
+        `;
+    
+    toDoList.innerHTML += html;
+    }
+
+    app.appendChild(h1);
+    app.appendChild(toDoList);
 }
-
-renderTodoApp()
+renderTodoApp();
