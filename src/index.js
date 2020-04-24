@@ -18,28 +18,33 @@ let todos = [
     }
 ];
  
+
 function renderTodoApp() {
     let app = document.querySelector("#app");
-    let h1 = document.createElement("h1");
-    let toDoList = document.createElement("form");
 
-    h1.innerText = "Todo List";
+    let toDoItems = "";
 
     for (let tasks of todos){
-        let isChecked = task.completed ? "checked" : null;
-        let html = `
-        <ul>
+        let isChecked = todos.completed ? "checked" : "";
+        toDoItems += `
             <li>
-            <input type="checkbox" ${isChecked}> 
+            <input type="checkbox" class="list-item" ${isChecked}> 
             <label> ${tasks.description} </label>
             </li>
-        </ul>
         `;
-    
-    toDoList.innerHTML += html;
     }
+    
+    app.innerHTML = 
+    `<ul class = "list-items"> ${toDoItems} </ul>`
 
-    app.appendChild(h1);
-    app.appendChild(toDoList);
+    
 }
 renderTodoApp();
+
+function addToDo(){
+    let input = document.getElementById("form-input").value;
+    let newObj = {completed:false, description: input};
+    todo = todos.unshift(newObj);
+
+    renderTodoApp();
+}
