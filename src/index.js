@@ -35,16 +35,17 @@ function renderTodoApp() {
     }
     
     app.innerHTML = 
-    `<ul class = "list-items"> ${toDoItems} </ul>`
+    `<ul class="list-items"> ${toDoItems} </ul>`
 
     
 }
 renderTodoApp();
 
 function addToDo(){
-    let input = document.getElementById("form-input").value;
+    let input = document.querySelector("#form-input").value;
     let newObj = {completed:false, description: input};
     todo = todos.unshift(newObj);
+    
 
     renderTodoApp();
 }
