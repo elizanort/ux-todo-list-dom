@@ -17,16 +17,35 @@ let todos = [
         description: "Call the caterers"
     }
 ];
+ 
 
 function renderTodoApp() {
-    let app = document.querySelector("#app")
-    let h1 = document.createElement("h1")
-    // your code here
+    let app = document.querySelector("#app");
 
-    h1.innerText = "Todo List"
+    let toDoItems = "";
 
-    app.appendChild(h1)
-    // and maybe some here
+    for (let tasks of todos){
+        let isChecked = todos.completed ? "checked" : "";
+        toDoItems += `
+            <li>
+            <input type="checkbox" class="list-item" ${isChecked}> 
+            <label> ${tasks.description} </label>
+            </li>
+        `;
+    }
+    
+    app.innerHTML = 
+    `<ul class="list-items"> ${toDoItems} </ul>`
+
+    
 }
+renderTodoApp();
 
-renderTodoApp()
+function addToDo(){
+    let input = document.querySelector("#form-input").value;
+    let newObj = {completed:false, description: input};
+    todo = todos.unshift(newObj);
+    
+
+    renderTodoApp();
+}
